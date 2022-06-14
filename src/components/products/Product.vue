@@ -1,7 +1,7 @@
 <template>
-  <div v-if="data">
+  <div>
     <v-container>
-      <v-row justify="center">
+      <v-row v-if="data" justify="center">
         <v-col cols="4">
           <v-card rounded="0" elevation="0">
             <v-card-text>
@@ -32,25 +32,38 @@
             </v-col>
 
             <v-col style="padding: 0" align-self="end" cols="10">
-              <v-btn tile large width="100%" style="text-transform: none" dark>
+              <v-btn
+                @click="$emit('hello', data.data.id), $emit('loading')"
+                tile
+                large
+                width="100%"
+                style="text-transform: none"
+                dark
+              >
                 Add to cart
               </v-btn>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
-      <v-divider class="primary mt-8"></v-divider>
+
+      <Loader v-else />
+      <v-divider v-if="data" class="primary mt-8"></v-divider>
     </v-container>
   </div>
 </template>
 
 <script>
+import Loader from "../layout/Loader.vue";
 import axios from "axios";
 export default {
   data() {
     return {
       data: null,
     };
+  },
+  components: {
+    Loader,
   },
   created() {
     axios
