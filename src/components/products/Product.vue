@@ -2,14 +2,14 @@
   <div>
     <v-container>
       <v-row v-if="data" justify="center">
-        <v-col cols="4">
+        <v-col lg="4" md="4">
           <v-card rounded="0" elevation="0">
             <v-card-text>
               <v-img contain height="650px" :src="data.data.image"> </v-img>
             </v-card-text>
           </v-card>
         </v-col>
-        <v-col style="padding: 0" cols="5">
+        <v-col style="padding: 0" lg="5" md="5">
           <v-row style="height: 100%" justify="center">
             <v-col cols="10">
               <p class="display-2 secondary--text font-weight-bold">
